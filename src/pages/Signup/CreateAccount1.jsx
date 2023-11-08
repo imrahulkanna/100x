@@ -5,10 +5,11 @@ import Fieldset from "../../components/Fieldset";
 import Input from "../../components/Input";
 import Select, { SelectItem } from "../../components/Select";
 import Button from "../../components/Button";
-
+import { useAuth } from "../../context/AuthContext";
 
 function CreateAccount1() {
   const navigate = useNavigate();
+  const { userCred } = useAuth();
   const months = [
     "Januaury",
     "February",
@@ -30,6 +31,17 @@ function CreateAccount1() {
   const years = [];
   for (let i = 2023; i >= 1990; i--) years.push(i);
 
+  const handleClick = (e) => {
+    navigate("/signup2");
+  };
+
+  const isEmailValid = () => {
+    const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    const email = userCred["Email"];
+    if(email==='') return true;
+    return(regex.test(email))
+  }
+
   return (
     <div className="flex min-h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50">
       <section className="flex flex-col items-start gap-3 self-stretch">
@@ -46,11 +58,25 @@ function CreateAccount1() {
             <Fieldset type={"Name"}>
               <Input type="text" placeholder="Name" />
             </Fieldset>
+            {userCred["Name"].trim() !== userCred["Name"] ? (
+              <p className="-my-5 text-sm font-semibold text-error ">
+                Enter a valid name
+              </p>
+            ) : (
+              <></>
+            )}
 
             {/* Email Fieldset */}
             <Fieldset type={"Email"}>
               <Input type="email" placeholder="Email" />
             </Fieldset>
+            {!isEmailValid() ? (
+              <p className="-my-5 text-sm font-semibold text-error ">
+                Enter a valid email
+              </p>
+            ) : (
+              <></>
+            )}
 
             <div className="flex flex-col items-start gap-2 self-stretch">
               <p className="text-base-1 font-bold leading-normal">
@@ -108,8 +134,19 @@ function CreateAccount1() {
         <Button
           variant="solid"
           text="Create account"
-          type="primary"
-          onClick={() => navigate("/signup2")}
+          color="primary"
+          onClick={handleClick}
+          disabled={
+            !(
+              userCred["Name"] && // 
+              userCred["Email"] &&
+              userCred["Month"] &&
+              userCred["Day"] &&
+              userCred["Year"] &&
+              isEmailValid() &&
+              userCred["Name"].trim() === userCred["Name"]
+            )
+          }
         />
       </section>
     </div>

@@ -32,7 +32,7 @@ function Login() {
           variant="solid"
           text="Create account"
           modal="login"
-          type="primary"
+          color="primary"
           onClick={() => navigate("/signup")}
         />
         <div className="flex w-full items-center justify-center gap-1 self-stretch">
@@ -51,7 +51,11 @@ function Login() {
           >
             Sign in
           </button> */}
-          <Button variant="outline" text="Sign in"/>
+          <Button
+            variant="outline"
+            text="Sign in"
+            onClick={() => navigate("/home")}
+          />
         </div>
       </main>
     </div>

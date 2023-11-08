@@ -4,9 +4,11 @@ import SignupHeader from "../../components/Signup/SignupHeader";
 import Fieldset from "../../components/Fieldset";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { useAuth } from "../../context/AuthContext";
 
 function CreateAccount3() {
   const navigate = useNavigate();
+  const { userCred } = useAuth();
   return (
     <div className="flex min-h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50">
       <section className="flex flex-col items-start gap-3 self-stretch">
@@ -50,8 +52,9 @@ function CreateAccount3() {
         <Button
           variant="solid"
           text="Next"
-          type="primary"
+          color="primary"
           onClick={() => navigate("/signup4")}
+          disabled={!userCred['Verification code']}
         />
       </section>
     </div>

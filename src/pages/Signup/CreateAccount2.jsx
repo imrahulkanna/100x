@@ -10,6 +10,10 @@ import Button from "../../components/Button";
 function CreateAccount2() {
   const navigate = useNavigate();
 
+  function handleClick() {
+    navigate(-1);
+  }
+
   return (
     <div className="flex min-h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50">
       <section className="flex flex-col items-start gap-3 self-stretch">
@@ -24,19 +28,23 @@ function CreateAccount2() {
           <form className="flex flex-col items-start gap-8 self-stretch">
             {/* Name Fieldset */}
             <Fieldset type={"Name"}>
-              <Input type="text" placeholder="Name" />
+              <Input type="text" placeholder="Name" onClick={handleClick} />
               <Img imgPath={correctImg} imgAlt="correct-icon" />
             </Fieldset>
 
             {/* Email Fieldset */}
             <Fieldset type={"Email"}>
-              <Input type="text" placeholder="Email" />
+              <Input type="text" placeholder="Email" onClick={handleClick} />
               <Img imgPath={correctImg} imgAlt="correct-icon" />
             </Fieldset>
 
             {/* Date of Birth */}
             <Fieldset type={"Date of birth"}>
-              <Input type="text" placeholder="Date of birth" />
+              <Input
+                type="text"
+                placeholder="Date of birth"
+                onClick={handleClick}
+              />
               <Img imgPath={correctImg} imgAlt="correct-icon" />
             </Fieldset>
           </form>
@@ -54,7 +62,7 @@ function CreateAccount2() {
         <Button
           variant="solid"
           text="Sign up"
-          type="secondary"
+          color="secondary"
           onClick={() => navigate("/signup3")}
         />
       </section>

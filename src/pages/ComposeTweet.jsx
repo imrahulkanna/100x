@@ -44,7 +44,7 @@ function ComposeTweet() {
         <Button
           variant="solid"
           text="Post"
-          type="secondary"
+          color="secondary"
           onClick={handleClick}
           disabled={characterCount <= 0 ? true : false}
         />

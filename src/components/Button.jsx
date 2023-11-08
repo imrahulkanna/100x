@@ -1,6 +1,14 @@
 import React from "react";
 
-const Button = ({ children, variant, type, text, modal, disabled, ...rest }) => {
+const Button = ({
+  children,
+  variant,
+  color,
+  text,
+  modal,
+  disabled,
+  ...rest
+}) => {
   const basestyle =
     "flex items-center justify-center px-6 font-bold leading-normal text-base shadow-signup backdrop-blur-xl-1";
 
@@ -31,19 +39,24 @@ const Button = ({ children, variant, type, text, modal, disabled, ...rest }) => 
 
   const disabledStyle = disabled ? "disabled:opacity-50" : "";
 
-  if(variant === "icon") {
+  if (variant === "icon") {
     return <button {...rest}>{children}</button>;
   }
 
   let style = "";
 
-  if(text === "Edit profile") {
+  if (text === "Edit profile") {
     style = buttonVariant[variant]["Edit profile"];
   } else {
-    style = `${basestyle} ${buttonVariant[variant]?.[text]} ${colorType?.[type]} ${disabledStyle}`;
+    style = `${basestyle} ${buttonVariant[variant]?.[text]} ${colorType?.[color]} ${disabledStyle}`;
   }
 
-  return <button className={style} disabled={disabled} {...rest}>{text}{children}</button>;
+  return (
+    <button className={style} disabled={disabled} {...rest}>
+      {text}
+      {children}
+    </button>
+  );
 };
 
 export default Button;

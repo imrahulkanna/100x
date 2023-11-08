@@ -1,17 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SignupHeader from "../../components/Signup/SignupHeader";
 import Fieldset from "../../components/Fieldset";
 import Input from "../../components/Input";
 import Img from "../../components/Img";
 import Button from "../../components/Button";
+import { useAuth } from "../../context/AuthContext";
 import eyeIcon from "../../assets/visible-t.svg";
 import eyeIconActive from "../../assets/visible-t-blue.svg";
-import { useNavigate } from "react-router-dom";
 
 function CreateAccount4() {
   const navigate = useNavigate();
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeIcon);
+  const { userCred } = useAuth();
 
   const togglePassWordDisplay = () => {
     if (type === "password") {
@@ -64,8 +66,9 @@ function CreateAccount4() {
         <Button
           variant="solid"
           text="Next"
-          type="primary"
+          color="primary"
           onClick={() => navigate("/home")}
+          disabled={!userCred['Password']}
         />
       </section>
     </div>

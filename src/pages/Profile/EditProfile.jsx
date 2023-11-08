@@ -24,13 +24,18 @@ function EditProfile() {
         </div>
 
         {/* Save button */}
-        <button
+        {/* <button
           onClick={() => navigate("/profile")}
           className="flex items-center justify-center rounded-twitter bg-twitter-neutral-50 px-6 py-2 text-base font-bold leading-normal text-black hover:bg-twitter-neutral-200 disabled:opacity-50 disabled:hover:bg-twitter-neutral-50 md:rounded-full md:px-[93px] md:py-[15px]"
         >
           Save
-        </button>
-        <Button variant="solid" text="Save" type="primary" />
+        </button> */}
+        <Button
+          variant="solid"
+          text="Save"
+          color="primary"
+          onClick={() => navigate("/profile")}
+        />
       </header>
 
       {/* Cover & Profile image edit */}
