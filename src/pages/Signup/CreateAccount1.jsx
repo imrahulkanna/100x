@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import SignupHeader from "../../components/Signup/SignupHeader";
 import Fieldset from "../../components/Fieldset";
@@ -9,6 +9,7 @@ import { useAuth } from "../../context/AuthContext";
 
 function CreateAccount1() {
   const navigate = useNavigate();
+  const [isEmailValid, setIsEmailValid] = useState(true);
   const { userCred } = useAuth();
   const months = [
     "Januaury",
@@ -35,11 +36,10 @@ function CreateAccount1() {
     navigate("/signup2");
   };
 
-  const isEmailValid = () => {
+  const handleFocusOut = () => {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const email = userCred["Email"];
-    if(email==='') return true;
-    return(regex.test(email))
+    setIsEmailValid(regex.test(email))
   }
 
   return (
@@ -58,8 +58,8 @@ function CreateAccount1() {
             <Fieldset type={"Name"}>
               <Input type="text" placeholder="Name" />
             </Fieldset>
-            {userCred["Name"].trim() !== userCred["Name"] ? (
-              <p className="-my-5 text-sm font-semibold text-error ">
+            {userCred["Name"].trimStart() !== userCred["Name"] ? (
+              <p className="-my-5 text-sm font-medium text-red-600 ">
                 Enter a valid name
               </p>
             ) : (
@@ -68,10 +68,10 @@ function CreateAccount1() {
 
             {/* Email Fieldset */}
             <Fieldset type={"Email"}>
-              <Input type="email" placeholder="Email" />
+              <Input type="email" placeholder="Email" onBlur={handleFocusOut} />
             </Fieldset>
-            {!isEmailValid() ? (
-              <p className="-my-5 text-sm font-semibold text-error ">
+            {!isEmailValid ? (
+              <p className="-my-5 text-sm font-medium text-red-600 ">
                 Enter a valid email
               </p>
             ) : (
@@ -143,7 +143,7 @@ function CreateAccount1() {
               userCred["Month"] &&
               userCred["Day"] &&
               userCred["Year"] &&
-              isEmailValid() &&
+              isEmailValid &&
               userCred["Name"].trim() === userCred["Name"]
             )
           }

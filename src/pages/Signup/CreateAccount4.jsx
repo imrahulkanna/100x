@@ -13,6 +13,7 @@ function CreateAccount4() {
   const navigate = useNavigate();
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeIcon);
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
   const { userCred } = useAuth();
 
   const togglePassWordDisplay = () => {
@@ -25,6 +26,15 @@ function CreateAccount4() {
     }
   };
 
+  const handleFocusOut = () => {
+    const password = userCred['Password'];
+    if (password.length < 8) {
+      setIsPasswordValid(false);
+    } else {
+      setIsPasswordValid(true);
+    }
+  }
+  
   return (
     <div className="flex min-h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50">
       <section className="flex flex-col items-start gap-3 self-stretch">
@@ -43,7 +53,7 @@ function CreateAccount4() {
           </section>
           <section className="self-stretch">
             <Fieldset type={"Password"}>
-              <Input type={type} placeholder="Password" />
+              <Input type={type} placeholder="Password" onBlur={handleFocusOut} />
               <Img
                 imgPath={icon}
                 imgAlt="visible-t-icon"
@@ -51,6 +61,13 @@ function CreateAccount4() {
                 onClick={togglePassWordDisplay}
               />
             </Fieldset>
+            {!isPasswordValid ? (
+              <p className="text-sm font-medium text-red-600 ">
+                Password must have minimum 8 characters
+              </p>
+            ) : (
+              <></>
+            )}
           </section>
         </main>
       </section>
@@ -68,7 +85,7 @@ function CreateAccount4() {
           text="Next"
           color="primary"
           onClick={() => navigate("/home")}
-          disabled={!userCred['Password']}
+          disabled={userCred["Password"].length <8}
         />
       </section>
     </div>

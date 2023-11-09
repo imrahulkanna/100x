@@ -22,7 +22,7 @@ function CreateAccount3() {
               We sent you a code
             </h1>
             <p className="text-sm font-normal leading-normal text-twitter-neutral-500">
-              Enter it below to verify janedoe@gmail.com
+              Enter it below to verify {userCred['Email']}
             </p>
           </section>
           <section className="flex flex-col items-end gap-3 self-stretch">
