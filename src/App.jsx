@@ -10,6 +10,7 @@ import EditProfile from "./pages/Profile/EditProfile";
 import ComposeTweet from "./pages/ComposeTweet";
 import AuthProvider from "./context/AuthContext";
 import TweetProvider from "./context/TweetContext";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
   {
     path: "/compose-tweet",
     element: <ComposeTweet />,
+  },
+  {
+    path: "*",
+    element: <Error />,
   },
 ]);
 
