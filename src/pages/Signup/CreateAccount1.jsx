@@ -134,7 +134,7 @@ function CreateAccount1() {
         <Button
           variant="solid"
           text="Create account"
-          color="primary"
+          color="secondary"
           onClick={handleClick}
           disabled={
             !(

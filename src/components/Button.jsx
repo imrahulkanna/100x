@@ -32,9 +32,9 @@ const Button = ({
 
   const colorType = {
     primary:
-      "bg-twitter-neutral-50 hover:bg-twitter-neutral-200 disabled:hover:bg-twitter-neutral-50 text-black",
-    secondary:
       "bg-twitter-blue hover:bg-twitter-blue-hover disabled:hover:bg-twitter-blue text-twitter-neutral-50",
+    secondary:
+      "bg-twitter-neutral-50 hover:bg-twitter-neutral-200 disabled:hover:bg-twitter-neutral-50 text-black",
   };
 
   const disabledStyle = disabled ? "disabled:opacity-50" : "";

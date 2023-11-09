@@ -32,7 +32,7 @@ function Login() {
           variant="solid"
           text="Create account"
           modal="login"
-          color="primary"
+          color="secondary"
           onClick={() => navigate("/signup")}
         />
         <div className="flex w-full items-center justify-center gap-1 self-stretch">

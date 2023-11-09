@@ -33,7 +33,7 @@ function EditProfile() {
         <Button
           variant="solid"
           text="Save"
-          color="primary"
+          color="secondary"
           onClick={() => navigate("/profile")}
         />
       </header>

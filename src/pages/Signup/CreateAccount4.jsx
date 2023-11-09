@@ -83,7 +83,7 @@ function CreateAccount4() {
         <Button
           variant="solid"
           text="Next"
-          color="primary"
+          color="secondary"
           onClick={() => navigate("/home")}
           disabled={userCred["Password"].length <8}
         />

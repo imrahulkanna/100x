@@ -62,7 +62,7 @@ function CreateAccount2() {
         <Button
           variant="solid"
           text="Sign up"
-          color="secondary"
+          color="primary"
           onClick={() => navigate("/signup3")}
         />
       </section>

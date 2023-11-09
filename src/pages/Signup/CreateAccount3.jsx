@@ -52,7 +52,7 @@ function CreateAccount3() {
         <Button
           variant="solid"
           text="Next"
-          color="primary"
+          color="secondary"
           onClick={() => navigate("/signup4")}
           disabled={!userCred['Verification code']}
         />
