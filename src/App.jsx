@@ -11,8 +11,30 @@ import ComposeTweet from "./pages/ComposeTweet";
 import AuthProvider from "./context/AuthContext";
 import TweetProvider from "./context/TweetContext";
 import Error from "./pages/Error";
+import PrivateRoutes from "./utils/PrivateRoutes";
 
 const router = createBrowserRouter([
+  {
+    element: <PrivateRoutes />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/edit-profile",
+        element: <EditProfile />,
+      },
+      {
+        path: "/compose-tweet",
+        element: <ComposeTweet />,
+      },
+    ],
+  },
   {
     path: "/",
     element: <Login />,
@@ -32,22 +54,6 @@ const router = createBrowserRouter([
   {
     path: "/signup4",
     element: <CreateAccount4 />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
-  {
-    path: "/edit-profile",
-    element: <EditProfile />,
-  },
-  {
-    path: "/compose-tweet",
-    element: <ComposeTweet />,
   },
   {
     path: "*",

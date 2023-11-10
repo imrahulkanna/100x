@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Tweet from "../components/Tweet";
 import Img from "../components/Img";
 import Icon from "../components/Icon";
@@ -18,14 +18,14 @@ function Home() {
   return (
     <div className="relative flex min-h-screen flex-col items-start bg-black font-inter text-twitter-neutral-50">
       {/* Header - 100xlogo and user dp */}
-      <header className="relative self-stretch border-b border-twitter-neutral-700 px-4 py-3">
-        <a onClick={() => navigate("/profile")}>
+      <header className="relative flex self-stretch border-b border-twitter-neutral-700 px-4 py-3">
+        <Link to="/profile">
           <Img
             imgPath={userDP}
             imgAlt="user-dp"
             style="w-9 h-9 rounded-full object-cover"
           />
-        </a>
+        </Link>
         <Img
           imgPath={logo_100x}
           imgAlt="100x"
