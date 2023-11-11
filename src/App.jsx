@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./pages/Login";
+import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import CreateAccount1 from "./pages/Signup/CreateAccount1";
 import CreateAccount2 from "./pages/Signup/CreateAccount2";
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Login />,
+    element: <LandingPage />,
   },
   {
     path: "/signup",
