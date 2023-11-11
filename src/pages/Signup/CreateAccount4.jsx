@@ -28,10 +28,10 @@ function CreateAccount4() {
 
   const handleFocusOut = () => {
     const password = userCred['Password'];
-    if (password.length < 8) {
-      setIsPasswordValid(false);
-    } else {
+    if (password.length >= 8) {
       setIsPasswordValid(true);
+    } else {
+      setIsPasswordValid(false);
     }
   }
   
@@ -53,7 +53,11 @@ function CreateAccount4() {
           </section>
           <section className="self-stretch">
             <Fieldset type={"Password"}>
-              <Input type={type} placeholder="Password" onBlur={handleFocusOut} />
+              <Input
+                type={type}
+                placeholder="Password"
+                onKeyUp={handleFocusOut}
+              />
               <Img
                 imgPath={icon}
                 imgAlt="visible-t-icon"
@@ -85,7 +89,7 @@ function CreateAccount4() {
           text="Next"
           color="secondary"
           onClick={() => navigate("/home")}
-          disabled={userCred["Password"].length <8}
+          disabled={userCred["Password"].length < 8}
         />
       </section>
     </div>

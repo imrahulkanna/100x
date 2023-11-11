@@ -68,7 +68,7 @@ function CreateAccount1() {
 
             {/* Email Fieldset */}
             <Fieldset type={"Email"}>
-              <Input type="email" placeholder="Email" onBlur={handleFocusOut} />
+              <Input type="email" placeholder="Email" onKeyUp={handleFocusOut} />
             </Fieldset>
             {!isEmailValid ? (
               <p className="-my-5 text-sm font-medium text-red-600 ">
