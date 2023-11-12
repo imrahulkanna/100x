@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupHeader from "../../components/Signup/SignupHeader";
 import Fieldset from "../../components/Fieldset";
@@ -7,7 +7,7 @@ import Select, { SelectItem } from "../../components/Select";
 import Button from "../../components/Button";
 import { useAuth } from "../../context/AuthContext";
 
-function CreateAccount1() {
+function CreateAccount1({ closeModal }) {
   const navigate = useNavigate();
   const [isEmailValid, setIsEmailValid] = useState(true);
   const { userCred } = useAuth();
@@ -39,17 +39,17 @@ function CreateAccount1() {
   const handleFocusOut = () => {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const email = userCred["Email"];
-    setIsEmailValid(regex.test(email))
-  }
+    setIsEmailValid(regex.test(email));
+  };
 
   return (
-    <div className="flex min-h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50">
+    <div className="flex h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50 lg:z-[1000] lg:h-[608px] lg:w-[512px] lg:rounded-2xl lg:py-5">
       <section className="flex flex-col items-start gap-3 self-stretch">
         {/* Header */}
-        <SignupHeader step={1} />
+        <SignupHeader step={1} closeModal={closeModal}/>
 
         {/* Create Account Form*/}
-        <main className="flex flex-col items-start gap-5 self-stretch">
+        <main className="flex flex-col items-start gap-5 self-stretch lg:px-7">
           <h1 className="text-2xl font-bold leading-normal">
             Create your account
           </h1>
@@ -68,7 +68,11 @@ function CreateAccount1() {
 
             {/* Email Fieldset */}
             <Fieldset type={"Email"}>
-              <Input type="email" placeholder="Email" onKeyUp={handleFocusOut} />
+              <Input
+                type="email"
+                placeholder="Email"
+                onKeyUp={handleFocusOut}
+              />
             </Fieldset>
             {!isEmailValid ? (
               <p className="-my-5 text-sm font-medium text-red-600 ">
@@ -124,7 +128,7 @@ function CreateAccount1() {
       </section>
 
       {/* Create Account Button*/}
-      <section className="self-stretch">
+      <section className="self-stretch lg:px-5">
         {/* <button
           className="flex w-full items-center justify-center rounded-signup-radius bg-twitter-neutral-50 px-6 py-3 font-bold leading-normal text-black shadow-signup backdrop-blur-xl-1 hover:bg-twitter-neutral-200"
           onClick={() => navigate("/signup2")}
@@ -138,7 +142,7 @@ function CreateAccount1() {
           onClick={handleClick}
           disabled={
             !(
-              userCred["Name"] && // 
+              userCred["Name"] &&
               userCred["Email"] &&
               userCred["Month"] &&
               userCred["Day"] &&

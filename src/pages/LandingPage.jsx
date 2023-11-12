@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "./Modal";
+import CreateAccount1 from "./Signup/CreateAccount1";
 import Button from "../components/Button";
-import logo100x from '../assets/100x.svg'
+import logo100x from "../assets/100x.svg";
 
 function LandingPage() {
   const navigate = useNavigate();
+  const [openModal, setOpenModal] = useState(false);
+
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+
+  const handleSignUpClick = () => {
+    let width = screen.width;
+    if (width < 1024) {
+      navigate("/signup");
+    } else {
+      setOpenModal(true);
+    }
+  };
   return (
     <div className="flex min-h-screen flex-col justify-center bg-black font-inter text-twitter-neutral-50 lg:flex-row lg:items-center lg:gap-26">
       {/* Logo */}
-      <header className="absolute top-0 left-1/2 -translate-x-1/2 flex items-end justify-center px-4 py-3 lg:static lg:p-0 lg:translate-x-0">
-        <img src={logo100x} alt="100x-logo" className="lg:w-[593] lg:h-[199px]" />
+      <header className="absolute left-1/2 top-0 flex -translate-x-1/2 items-end justify-center px-4 py-3 lg:static lg:translate-x-0 lg:p-0">
+        <img
+          src={logo100x}
+          alt="100x-logo"
+          className="lg:h-[199px] lg:w-[593]"
+        />
       </header>
 
       {/* Sign in */}
@@ -33,7 +53,7 @@ function LandingPage() {
           text="Create account"
           modal="login"
           color="secondary"
-          onClick={() => navigate("/signup")}
+          onClick={handleSignUpClick}
         />
         <div className="flex w-full items-center justify-center gap-1 self-stretch">
           <div className="h-px w-full bg-neutral-700" />
@@ -58,6 +78,11 @@ function LandingPage() {
           />
         </div>
       </main>
+      {openModal && (
+        <Modal>
+          <CreateAccount1 closeModal={closeModal} />
+        </Modal>
+      )}
     </div>
   );
 }
