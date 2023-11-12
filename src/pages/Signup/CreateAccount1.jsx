@@ -43,13 +43,13 @@ function CreateAccount1({ closeModal }) {
   };
 
   return (
-    <div className="flex h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50 lg:z-[1000] lg:h-[608px] lg:w-[512px] lg:rounded-2xl lg:py-5">
+    <div className="flex h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50 md:z-[1000] md:h-[608px] md:w-[512px] md:rounded-2xl md:py-5">
       <section className="flex flex-col items-start gap-3 self-stretch">
         {/* Header */}
         <SignupHeader step={1} closeModal={closeModal}/>
 
         {/* Create Account Form*/}
-        <main className="flex flex-col items-start gap-5 self-stretch lg:px-7">
+        <main className="flex flex-col items-start gap-5 self-stretch md:px-7">
           <h1 className="text-2xl font-bold leading-normal">
             Create your account
           </h1>
@@ -128,7 +128,7 @@ function CreateAccount1({ closeModal }) {
       </section>
 
       {/* Create Account Button*/}
-      <section className="self-stretch lg:px-5">
+      <section className="self-stretch md:px-5">
         {/* <button
           className="flex w-full items-center justify-center rounded-signup-radius bg-twitter-neutral-50 px-6 py-3 font-bold leading-normal text-black shadow-signup backdrop-blur-xl-1 hover:bg-twitter-neutral-200"
           onClick={() => navigate("/signup2")}

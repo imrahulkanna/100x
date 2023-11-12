@@ -11,7 +11,7 @@ function SignupHeader({ step, closeModal }) {
 
   function handleImgClick() {
     const screenWidth = screen.width;
-    if (screenWidth >= 1024) {
+    if (screenWidth >= 768) {
       closeModal();
     }
 
@@ -33,7 +33,7 @@ function SignupHeader({ step, closeModal }) {
     }
   }
   return (
-    <header className="flex items-center gap-5 self-stretch py-3 lg:px-4">
+    <header className="flex items-center gap-5 self-stretch py-3 md:px-4">
       <button onClick={handleImgClick}>
         {step === 1 ? (
           <Img imgPath={cancelIcon} imgAlt="cancel-icon" />

@@ -15,30 +15,30 @@ function LandingPage() {
 
   const handleSignUpClick = () => {
     let width = screen.width;
-    if (width < 1024) {
+    if (width < 768) {
       navigate("/signup");
     } else {
       setOpenModal(true);
     }
   };
   return (
-    <div className="flex min-h-screen flex-col justify-center bg-black font-inter text-twitter-neutral-50 lg:flex-row lg:items-center lg:gap-26">
+    <div className="flex min-h-screen flex-col justify-center bg-black font-inter text-twitter-neutral-50 md:flex-row md:items-center md:gap-26">
       {/* Logo */}
-      <header className="absolute left-1/2 top-0 flex -translate-x-1/2 items-end justify-center px-4 py-3 lg:static lg:translate-x-0 lg:p-0">
+      <header className="absolute left-1/2 top-0 flex -translate-x-1/2 items-end justify-center px-4 py-3 md:static md:translate-x-0 md:p-0 md:pl-7 ">
         <img
           src={logo100x}
           alt="100x-logo"
-          className="lg:h-[199px] lg:w-[593]"
+          className="md:h-[199px] md:w-[593]"
         />
       </header>
 
       {/* Sign in */}
       <main className="flex flex-col items-start gap-10 px-7">
         <div className="flex flex-col items-start gap-3 self-stretch">
-          <p className="text-3.25xl font-extrabold leading-normal lg:text-5xl lg:font-bold">
+          <p className="text-3.25xl font-extrabold leading-normal md:text-5xl md:font-bold">
             Happening now
           </p>
-          <p className="text-base font-medium leading-normal lg:text-2.5xl lg:font-bold">
+          <p className="text-base font-medium leading-normal md:text-2.5xl md:font-bold">
             Join today.
           </p>
         </div>
@@ -61,7 +61,7 @@ function LandingPage() {
           <div className="h-px w-full bg-neutral-700" />
         </div>
         <div className="flex flex-col items-start gap-5 self-stretch">
-          <p className="text-base-1 font-normal leading-normal lg:text-xl">
+          <p className="text-base-1 font-normal leading-normal md:text-xl">
             Already have an account?
           </p>
 
