@@ -14,7 +14,7 @@ function CreateAccount4() {
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeIcon);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
-  const { userCred } = useAuth();
+  const { userCred, setUserCred } = useAuth();
 
   const togglePassWordDisplay = () => {
     if (type === "password") {
@@ -33,6 +33,10 @@ function CreateAccount4() {
     } else {
       setIsPasswordValid(false);
     }
+  }
+
+  const handleChange = (e) => {
+    setUserCred({ ...userCred, ["Password"]: e.target.value });
   }
   
   return (
@@ -56,6 +60,9 @@ function CreateAccount4() {
               <Input
                 type={type}
                 placeholder="Password"
+                name="Password"
+                value={userCred["Password"]}
+                onChangeHandler={handleChange}
                 onKeyUp={handleFocusOut}
               />
               <Img

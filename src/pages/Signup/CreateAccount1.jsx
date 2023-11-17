@@ -10,7 +10,7 @@ import { useAuth } from "../../context/AuthContext";
 function CreateAccount1({ closeModal }) {
   const navigate = useNavigate();
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const { userCred } = useAuth();
+  const { userCred, setUserCred } = useAuth();
   const months = [
     "Januaury",
     "February",
@@ -36,6 +36,10 @@ function CreateAccount1({ closeModal }) {
     navigate("/signup2");
   };
 
+  const handleChange = (e) => {
+    setUserCred({ ...userCred, [e.target.name]: e.target.value });
+  };
+
   const handleFocusOut = () => {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const email = userCred["Email"];
@@ -46,7 +50,7 @@ function CreateAccount1({ closeModal }) {
     <div className="flex h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50 md:z-[1000] md:h-[608px] md:w-[512px] md:rounded-2xl md:py-5">
       <section className="flex flex-col items-start gap-3 self-stretch">
         {/* Header */}
-        <SignupHeader step={1} closeModal={closeModal}/>
+        <SignupHeader step={1} closeModal={closeModal} />
 
         {/* Create Account Form*/}
         <main className="flex flex-col items-start gap-5 self-stretch md:px-7">
@@ -56,7 +60,13 @@ function CreateAccount1({ closeModal }) {
           <form className="flex flex-col items-start gap-8 self-stretch">
             {/* Name Fieldset */}
             <Fieldset type={"Name"}>
-              <Input type="text" placeholder="Name" />
+              <Input
+                type="text"
+                name="Name"
+                placeholder="Name"
+                value={userCred["Name"]}
+                onChangeHandler={handleChange}
+              />
             </Fieldset>
             {userCred["Name"].trimStart() !== userCred["Name"] ? (
               <p className="-my-5 text-sm font-medium text-red-600 ">
@@ -71,6 +81,9 @@ function CreateAccount1({ closeModal }) {
               <Input
                 type="email"
                 placeholder="Email"
+                name="Email"
+                value={userCred["Email"]}
+                onChangeHandler={handleChange}
                 onKeyUp={handleFocusOut}
               />
             </Fieldset>
@@ -95,7 +108,11 @@ function CreateAccount1({ closeModal }) {
             <div className="flex items-start gap-3 self-stretch">
               {/* Month */}
               <Fieldset type={"Month"} size="1/2">
-                <Select name="Month">
+                <Select
+                  name="Month"
+                  value={userCred["Month"]}
+                  onChangeHandler={handleChange}
+                >
                   <SelectItem value={""} disabled />
                   {months.map((month) => (
                     <SelectItem key={month} value={month} />
@@ -105,7 +122,11 @@ function CreateAccount1({ closeModal }) {
 
               {/* Day */}
               <Fieldset type={"Day"} size="1/4">
-                <Select name="Day">
+                <Select
+                  name="Day"
+                  value={userCred["Day"]}
+                  onChangeHandler={handleChange}
+                >
                   <SelectItem value="" disabled />
                   {dates.map((date) => (
                     <SelectItem key={date} value={date} />
@@ -115,7 +136,11 @@ function CreateAccount1({ closeModal }) {
 
               {/* Year */}
               <Fieldset type={"Year"} size="1/4">
-                <Select name="Year">
+                <Select
+                  name="Year"
+                  value={userCred["Year"]}
+                  onChangeHandler={handleChange}
+                >
                   <SelectItem value="" disabled />
                   {years.map((year) => (
                     <SelectItem key={year} value={year} />

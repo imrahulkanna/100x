@@ -1,14 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import SignupHeader from "../../components/Signup/SignupHeader";
 import Fieldset from "../../components/Fieldset";
 import Input from "../../components/Input";
 import Img from "../../components/Img";
+import { useAuth } from "../../context/AuthContext";
 import correctImg from "../../assets/correct.svg";
 import Button from "../../components/Button";
 
 function CreateAccount2() {
   const navigate = useNavigate();
+  const { userCred, setUserCred } = useAuth();
+  let dob = "";
+
+  useEffect(() => {    
+    dob = userCred["Year"]
+      ? userCred["Month"].slice(0, 3) +
+        " " +
+        userCred["Day"] +
+        ", " +
+        userCred["Year"]
+      : "";
+    setUserCred({ ...userCred, ["Date of birth"]: dob });
+  }, []);
 
   function handleClick() {
     navigate(-1);
@@ -28,13 +42,25 @@ function CreateAccount2() {
           <form className="flex flex-col items-start gap-8 self-stretch">
             {/* Name Fieldset */}
             <Fieldset type={"Name"}>
-              <Input type="text" placeholder="Name" onClick={handleClick} />
+              <Input
+                type="text"
+                name="Name"
+                placeholder="Name"
+                value={userCred["Name"]}
+                onClick={handleClick}
+              />
               <Img imgPath={correctImg} imgAlt="correct-icon" />
             </Fieldset>
 
             {/* Email Fieldset */}
             <Fieldset type={"Email"}>
-              <Input type="text" placeholder="Email" onClick={handleClick} />
+              <Input
+                type="text"
+                name="Email"
+                placeholder="Email"
+                value={userCred["Email"]}
+                onClick={handleClick}
+              />
               <Img imgPath={correctImg} imgAlt="correct-icon" />
             </Fieldset>
 
@@ -42,7 +68,9 @@ function CreateAccount2() {
             <Fieldset type={"Date of birth"}>
               <Input
                 type="text"
+                name="Date of birth"
                 placeholder="Date of birth"
+                value={userCred["Date of birth"]}
                 onClick={handleClick}
               />
               <Img imgPath={correctImg} imgAlt="correct-icon" />

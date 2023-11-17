@@ -1,5 +1,4 @@
 import React from "react";
-import { useAuth } from "../context/AuthContext";
 
 export const SelectItem = ({ value, ...rest }) => {
   return (
@@ -9,18 +8,12 @@ export const SelectItem = ({ value, ...rest }) => {
   );
 };
 
-const Select = ({ name, children }) => {
-  const { userCred, setUserCred } = useAuth();
-
-  function handleChange(e) {
-    setUserCred({ ...userCred, [name]: e.target.value });
-  }
-
+const Select = ({ name, value, onChangeHandler, children }) => {
   return (
     <select
       name={name}
-      value={userCred[name]}
-      onChange={handleChange}
+      value={value}
+      onChange={onChangeHandler}
       className="w-full bg-black focus:outline-none"
     >
       {children}

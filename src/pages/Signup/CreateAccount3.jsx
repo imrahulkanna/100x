@@ -8,7 +8,11 @@ import { useAuth } from "../../context/AuthContext";
 
 function CreateAccount3() {
   const navigate = useNavigate();
-  const { userCred } = useAuth();
+  const { userCred, setUserCred } = useAuth();
+
+  function handleChange(e) {
+    setUserCred({ ...userCred, ["Verification code"]: e.target.value });
+  }
   return (
     <div className="flex min-h-screen flex-shrink-0 flex-col items-start justify-between bg-black px-[15px] pb-5 font-inter text-twitter-neutral-50">
       <section className="flex flex-col items-start gap-3 self-stretch">
@@ -22,12 +26,18 @@ function CreateAccount3() {
               We sent you a code
             </h1>
             <p className="text-sm font-normal leading-normal text-twitter-neutral-500">
-              Enter it below to verify {userCred['Email']}
+              Enter it below to verify {userCred["Email"]}
             </p>
           </section>
           <section className="flex flex-col items-end gap-3 self-stretch">
             <Fieldset type={"Verification code"}>
-              <Input type="text" placeholder="Verification code" />
+              <Input
+                type="text"
+                name="Verification code"
+                placeholder="Verification code"
+                value={userCred["Verification code"]}
+                onChangeHandler={handleChange}
+              />
             </Fieldset>
             <a
               href="https://www.twitter.com"
@@ -54,7 +64,7 @@ function CreateAccount3() {
           text="Next"
           color="secondary"
           onClick={() => navigate("/signup4")}
-          disabled={!userCred['Verification code']}
+          disabled={!userCred["Verification code"]}
         />
       </section>
     </div>
