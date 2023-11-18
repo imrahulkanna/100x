@@ -26,7 +26,7 @@ function CreateAccount4() {
     }
   };
 
-  const handleFocusOut = () => {
+  const handleKeyUp = () => {
     const password = userCred['Password'];
     if (password.length >= 8) {
       setIsPasswordValid(true);
@@ -56,14 +56,14 @@ function CreateAccount4() {
             </p>
           </section>
           <section className="self-stretch">
-            <Fieldset type={"Password"}>
+            <Fieldset type={"Password"} isValid={isPasswordValid}>
               <Input
                 type={type}
                 placeholder="Password"
                 name="Password"
                 value={userCred["Password"]}
                 onChangeHandler={handleChange}
-                onKeyUp={handleFocusOut}
+                onKeyUp={handleKeyUp}
               />
               <Img
                 imgPath={icon}

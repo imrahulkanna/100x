@@ -32,7 +32,9 @@ function CreateAccount1({ closeModal }) {
   const years = [];
   for (let i = 2023; i >= 1990; i--) years.push(i);
 
-  const handleClick = (e) => {
+  const isNameValid = userCred["Name"].trimStart() === userCred["Name"];
+
+  const handleClick = () => {
     navigate("/signup2");
   };
 
@@ -59,7 +61,7 @@ function CreateAccount1({ closeModal }) {
           </h1>
           <form className="flex flex-col items-start gap-8 self-stretch">
             {/* Name Fieldset */}
-            <Fieldset type={"Name"}>
+            <Fieldset type={"Name"} isValid={isNameValid}>
               <Input
                 type="text"
                 name="Name"
@@ -68,7 +70,7 @@ function CreateAccount1({ closeModal }) {
                 onChangeHandler={handleChange}
               />
             </Fieldset>
-            {userCred["Name"].trimStart() !== userCred["Name"] ? (
+            {!isNameValid ? (
               <p className="-my-5 text-sm font-medium text-red-600 ">
                 Enter a valid name
               </p>
@@ -77,7 +79,7 @@ function CreateAccount1({ closeModal }) {
             )}
 
             {/* Email Fieldset */}
-            <Fieldset type={"Email"}>
+            <Fieldset type={"Email"} isValid={isEmailValid}>
               <Input
                 type="email"
                 placeholder="Email"

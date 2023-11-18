@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Modal from "./Modal";
+import Modal from "../components/Modal";
 import CreateAccount1 from "./Signup/CreateAccount1";
 import Button from "../components/Button";
 import logo100x from "../assets/100x.svg";
