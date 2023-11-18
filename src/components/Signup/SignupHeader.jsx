@@ -5,16 +5,11 @@ import cancelIcon from "../../assets/cancel.svg";
 import backIcon from "../../assets/back.svg";
 import Img from "../Img";
 
-function SignupHeader({ step, closeModal }) {
+function SignupHeader({ step }) {
   const navigate = useNavigate();
-  const { userCred, setUserCred } = useAuth();
+  const { setUserCred } = useAuth();
 
   function handleImgClick() {
-    const screenWidth = screen.width;
-    if (screenWidth >= 768) {
-      closeModal();
-    }
-
     if (step === 1) {
       const resetCred = {
         Name: "",

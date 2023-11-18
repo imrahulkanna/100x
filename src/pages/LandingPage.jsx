@@ -1,26 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Modal from "../components/Modal";
-import CreateAccount1 from "./Signup/CreateAccount1";
 import Button from "../components/Button";
 import logo100x from "../assets/100x.svg";
 
 function LandingPage() {
   const navigate = useNavigate();
-  const [openModal, setOpenModal] = useState(false);
-
-  const closeModal = () => {
-    setOpenModal(false);
-  };
 
   const handleSignUpClick = () => {
-    let width = screen.width;
-    if (width < 768) {
-      navigate("/signup");
-    } else {
-      setOpenModal(true);
-    }
-  };
+    navigate("/signup");
+  }
   return (
     <div className="flex min-h-screen flex-col justify-center bg-black font-inter text-twitter-neutral-50 md:flex-row md:items-center md:gap-26">
       {/* Logo */}
@@ -78,11 +66,6 @@ function LandingPage() {
           />
         </div>
       </main>
-      {openModal && (
-        <Modal>
-          <CreateAccount1 closeModal={closeModal} />
-        </Modal>
-      )}
     </div>
   );
 }
