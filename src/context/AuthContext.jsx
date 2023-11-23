@@ -16,7 +16,6 @@ const AuthProvider = ({ children }) => {
     Month: "",
     Day: "",
     Year: "",
-    "Date of birth": "",
     Password: "",
     "Verification code": "",
   };

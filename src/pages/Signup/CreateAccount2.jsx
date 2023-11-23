@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import SignupHeader from "../../components/Signup/SignupHeader";
 import Fieldset from "../../components/Fieldset";
@@ -11,19 +11,14 @@ import correctImg from "../../assets/correct.svg";
 
 function CreateAccount2() {
   const navigate = useNavigate();
-  const { userCred, setUserCred } = useAuth();
-  let dob = "";
-
-  useEffect(() => {    
-    dob = userCred["Year"]
-      ? userCred["Month"].slice(0, 3) +
-        " " +
-        userCred["Day"] +
-        ", " +
-        userCred["Year"]
-      : "";
-    setUserCred({ ...userCred, ["Date of birth"]: dob });
-  }, []);
+  const { userCred } = useAuth();
+  let dob = userCred["Year"]
+    ? userCred["Month"].slice(0, 3) +
+      " " +
+      userCred["Day"] +
+      ", " +
+      userCred["Year"]
+    : "";
 
   function handleClick() {
     navigate(-1);
@@ -72,7 +67,7 @@ function CreateAccount2() {
                   type="text"
                   name="Date of birth"
                   placeholder="Date of birth"
-                  value={userCred["Date of birth"]}
+                  value={dob}
                   onClick={handleClick}
                 />
                 <Img imgPath={correctImg} imgAlt="correct-icon" />
