@@ -12,6 +12,7 @@ import AuthProvider from "./context/AuthContext";
 import TweetProvider from "./context/TweetContext";
 import Error from "./pages/Error";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import SearchBar from "./components/SearchBar";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <LandingPage />,
+    element: <SearchBar />,
   },
   {
     path: "/signup",

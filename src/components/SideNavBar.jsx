@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Img from "../Img";
-import Button from "../Button";
-import logo100x from "../../assets/100x.svg";
-import homeSelected from "../../assets/home-selected.svg";
-import home from "../../assets/home.svg";
-import profileSelected from "../../assets/profile-selected.svg";
-import profile from "../../assets/profile.svg";
-import userDP from "../../assets/rahul.jpg";
-import groupIcon from "../../assets/group.svg";
+import Img from "./Img";
+import Button from "./Button";
+import logo100x from "../assets/100x.svg";
+import homeSelected from "../assets/home-selected.svg";
+import home from "../assets/home.svg";
+import profileSelected from "../assets/profile-selected.svg";
+import profile from "../assets/profile.svg";
+import userDP from "../assets/rahul.jpg";
+import groupIcon from "../assets/group.svg";
 
 const SideNavBar = () => {
   const [activePage, setActivePage] = useState("home");

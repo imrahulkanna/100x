@@ -4,7 +4,7 @@ import Tweet from "../components/Tweet";
 import Img from "../components/Img";
 import Icon from "../components/Icon";
 import { useTweetData } from "../context/TweetContext";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Home/Navbar";
 import logo_100x from "../assets/100x.svg";
 import userDP from "../assets/rahul.jpg";
 import composeIcon from "../assets/createTweet.svg";
